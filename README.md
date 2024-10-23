@@ -1,2 +1,2 @@
-# Alg-2
+# Algoritmo e Estrutura de Dados II
 Algoritmos vistos em aula 
