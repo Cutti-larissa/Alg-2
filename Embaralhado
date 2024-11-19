@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+
+int entroux = -1;
+int entrouy = -1;
+int suavex = 1;
+int suavey = 1;
+
+int shuffle(char x[], char y[], char z[], int posX, int posY, int posZ){
+    if (posZ == strlen(z))
+        return 1;
+        
+    if (posX < strlen(x) && z[posZ] == x[posX])
+        if (shuffle(x,y,z,posX+1,posY,posZ+1)){
+            entrouy = -1;
+            entroux++;
+            if (entroux == 1)
+                suavex=0;
+            return 1;
+        }
+    
+    if (posY <strlen(y) && z[posZ] == y[posY])
+        if (shuffle(x,y,z,posX,posY+1,posZ+1)){
+            entroux = -1;
+            entrouy++;
+            if (entrouy == 1)
+                suavey=0;
+            return 1;
+        }
+            
+    return 0;
+}
+
+int main(){
+    char x[] = "BACK";
+    char y[] = "TRACKING";
+    char z[] = "BATRACCKIKNG";
+    
+    if (shuffle(x,y,z,0,0,0) != 0)
+        printf("z é embaralhado\n");
+    else
+        printf("z não é embaralhado\n");
+        
+    if (suavey || suavex)
+        printf("z é suave");
+    else
+        printf("z não é suave");
+        
+    return 0;
+}
