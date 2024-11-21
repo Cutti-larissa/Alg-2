@@ -7,7 +7,7 @@ void imprime_vetor(int v[], int n) {
     printf("\n");
 } 
   
-// funcao para gerar todas strings bin�rias 
+// funcao para gerar todas strings binárias 
 void vetores_binarios(int v[], int n, int i) { 
     if (i == n) { 
         imprime_vetor(v, n); 
