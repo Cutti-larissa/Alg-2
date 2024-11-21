@@ -1,4 +1,4 @@
-//caso que não sebe que o imput é um embaralhado
+//caso menos eficiente?
 #include <stdio.h>
 #include <string.h>
 
@@ -50,4 +50,44 @@ int main(){
     return 0;
 }
 
+//caso mais eficiente?
 //caso que sabe que o imput é embaralhado
+#include <stdio.h>
+#include <string.h>
+
+int entroux = -1;
+int entrouy = -1;
+
+int shuffle(char x[], char y[], char z[], int posX, int posY, int posZ){
+    if (posZ == strlen(z))
+        return 1;
+        
+    if (posX < strlen(x) && z[posZ] == x[posX])
+        if (shuffle(x,y,z,posX+1,posY,posZ+1) && (!(entroux == 0))){
+            entrouy = -1;
+            entroux++;
+            return 1;
+        }
+    
+    if (posY <strlen(y) && z[posZ] == y[posY])
+        if (shuffle(x,y,z,posX,posY+1,posZ+1)){
+            entroux = -1;
+            entrouy++;
+            return 1;
+        }
+            
+    return 0;
+}
+
+int main(){
+    char x[] = "BACK";
+    char y[] = "TRACKING";
+    char z[] = "BTRAACCKIKNG";
+    
+    if (shuffle(x,y,z,0,0,0) != 0)
+        printf("z é embaralhado suave\n");
+    else
+        printf("z não é embaralhado ou não é suave\n");
+        
+    return 0;
+}
