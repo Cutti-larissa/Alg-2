@@ -1,4 +1,4 @@
-#caso que não sebe que o imput é um embaralhado
+//caso que não sebe que o imput é um embaralhado
 #include <stdio.h>
 #include <string.h>
 
@@ -50,4 +50,4 @@ int main(){
     return 0;
 }
 
-#caso que sabe que o imput é embaralhado
+//caso que sabe que o imput é embaralhado
