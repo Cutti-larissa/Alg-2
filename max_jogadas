@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define N 3
 
 int jogadas = 0;
+int primeiro_x;
+int primeiro_y;
 
 int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[], int yMove[]);
  
@@ -31,15 +34,18 @@ void solveKT()
     for (int x = 0; x < N; x++)
         for (int y = 0; y < N; y++)
             sol[x][y] = -1;
- 
-	sol[0][0] = 0; // Since the Knight is initially at the first block
+            
+    primeiro_x = rand() % (N);
+    primeiro_y = rand() % (N);
+    
+	sol[primeiro_x][primeiro_y] = 0; // Since the Knight is initially at the first block
  
     /* xMove[] and yMove[] define next move of Knight. */
     int xMove[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
     int yMove[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
      
     /* Start from 0,0 and explore all tours using solveKTUtil() */
-    if (solveKTUtil(0, 0, 1, sol, xMove, yMove) == 1) 
+    if (solveKTUtil(primeiro_x, primeiro_y, 1, sol, xMove, yMove) == 1) 
         printSolution(sol);		       
     else
         printf("Solucao nao existe\n");    
@@ -52,7 +58,7 @@ int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[
 		return 1;
  
     /* Try all next moves from the current coordinate x, y */
-    for (int k = 0; k < 8; k++) {
+    for (int k = 0; k < 9; k++) {
         int next_x = x + xMove[k];
         int next_y = y + yMove[k];
         if (isSafe(next_x, next_y, sol)) 
