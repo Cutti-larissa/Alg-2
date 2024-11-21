@@ -51,7 +51,6 @@ int main(){
 }
 
 //caso mais eficiente?
-//caso que sabe que o imput é embaralhado
 #include <stdio.h>
 #include <string.h>
 
@@ -96,45 +95,17 @@ int main(){
 #include <stdio.h>
 #include <string.h>
 
-int entroux = -1;
-int entrouy = -1;
-
-int shuffle_y_maior(char x[], char y[], char z[], int posX, int posY, int posZ){
+int shuffle(char x[], char y[], char z[], int posX, int posY, int posZ, int entroux, int entrouy){
     if (posZ == strlen(z))
         return 1;
         
-    if (posX < strlen(x) && z[posZ] == x[posX])
-        if (shuffle_y_maior(x,y,z,posX+1,posY,posZ+1) && (!(entroux == 0))){
-            entrouy = -1;
-            entroux++;
+    if (posX < strlen(x) && z[posZ] == x[posX] && entroux < 2)
+        if (shuffle(x,y,z,posX+1,posY,posZ+1,entroux+1,0)){
             return 1;
         }
     
-    if (posY <strlen(y) && z[posZ] == y[posY])
-        if (shuffle_y_maior(x,y,z,posX,posY+1,posZ+1)){
-            entroux = -1;
-            entrouy++;
-            return 1;
-        }
-            
-    return 0;
-}
-
-int shuffle_x_maior(char x[], char y[], char z[], int posX, int posY, int posZ){
-    if (posZ == strlen(z))
-        return 1;
-        
-    if (posX < strlen(x) && z[posZ] == x[posX])
-        if (shuffle_x_maior(x,y,z,posX+1,posY,posZ+1)){
-            entrouy = -1;
-            entroux++;
-            return 1;
-        }
-    
-    if (posY <strlen(y) && z[posZ] == y[posY])
-        if (shuffle_x_maior(x,y,z,posX,posY+1,posZ+1) && (!(entrouy == 0))){
-            entroux = -1;
-            entrouy++;
+    if (posY <strlen(y) && z[posZ] == y[posY] && entrouy < 2)
+        if (shuffle(x,y,z,posX,posY+1,posZ+1,0,entrouy+1)){
             return 1;
         }
             
@@ -142,11 +113,11 @@ int shuffle_x_maior(char x[], char y[], char z[], int posX, int posY, int posZ){
 }
 
 int main(){
-    char x[] = "TRACKING";
-    char y[] = "BACK";
-    char z[] = "BATRACCKIKNG";
+    char x[] = "BACK";
+    char y[] = "TRACKING";
+    char z[] = "BATRAACCKIKNG";
     
-    if (((strlen(x)>strlen(y)) && (shuffle_x_maior(x,y,z,0,0,0) != 0)) || ((strlen(x)<strlen(y)) && (shuffle_y_maior(x,y,z,0,0,0) != 0)))
+    if (shuffle(x,y,z,0,0,0,0,0) != 0)
         printf("z é embaralhado suave\n");
     else
         printf("z não é embaralhado ou não é suave\n");
