@@ -10,7 +10,8 @@ BATRACKCKING é um embaralhado de BACK e TRACKING.
 Um embaralhado é dito suave se Z não usa mais que dois caracteres seguidos de X ou Y. Por exemplo:
 BTRAACCKIKNG é um embaralhado suave de BACK e TRACKING.
 O seguinte algoritmo (em linguagem C) verifica se uma string Z é um embaralhado de X e Y:
-int shuffle(char x[], char y[], char z[], int posX, int posY, int posZ) {
+
+int shuffle(char x[], char y[], char z[], int posX, int posY, int posZ){
     if (posZ == strlen(z))
         return 1;
 
@@ -25,7 +26,7 @@ int shuffle(char x[], char y[], char z[], int posX, int posY, int posZ) {
     return 0;
 }
 
-int main() {
+int main(){
     char x[] = "BACK";
     char y[] = "TRACKING";
     char z[] = "BTRAACKCKING";
