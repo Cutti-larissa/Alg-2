@@ -14,7 +14,7 @@ O seguinte algoritmo (em linguagem C) verifica se uma string Z é um embaralhado
 int shuffle(char x[], char y[], char z[], int posX, int posY, int posZ){
     if (posZ == strlen(z))
         return 1;
-
+        
     if (posX < strlen(x) && z[posZ] == x[posX])
         if (shuffle(x, y, z, posX + 1, posY, posZ + 1))
             return 1;
@@ -30,7 +30,7 @@ int main(){
     char x[] = "BACK";
     char y[] = "TRACKING";
     char z[] = "BTRAACKCKING";
-
+    
     if (shuffle(x, y, z, 0, 0, 0))
         printf("Z é embaralhado");
     else
