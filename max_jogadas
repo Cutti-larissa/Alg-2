@@ -35,11 +35,12 @@ void solveKT()
         for (int y = 0; y < N; y++)
             sol[x][y] = -1;
             
-    primeiro_x = rand() % (N);
-    primeiro_y = rand() % (N);
+    //primeiro_x = rand() % (N);
+    //primeiro_y = rand() % (N);
     
-	sol[primeiro_x][primeiro_y] = 0; // Since the Knight is initially at the first block
- 
+    //sol[primeiro_x][primeiro_y] = 0; // Since the Knight is initially at the first block
+    sol[0][0] = 0;
+
     /* xMove[] and yMove[] define next move of Knight. */
     int xMove[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
     int yMove[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
