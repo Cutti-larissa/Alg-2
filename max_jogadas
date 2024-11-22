@@ -62,7 +62,7 @@ int solveKTUtil(int x, int y, int movei, int sol[N][N], int xMove[N], int yMove[
         int next_x = x + xMove[k];
         int next_y = y + yMove[k];
         if (isSafe(next_x, next_y, sol)) 
-		{
+	{
             sol[next_x][next_y] = movei;
             if (jogadas<movei)
                 jogadas = movei;
