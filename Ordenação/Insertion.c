@@ -1,4 +1,4 @@
-#include "stdio.h"
+#include <stdio.h>
 
 void troca(int v[], int a, int b){ //vetor já é passado como referência?
   int temp;
