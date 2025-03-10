@@ -41,6 +41,26 @@ void maxheapify(int v[], int i, int n)
     }    
 }
 /************************************/
+void minheapify(int v[], int i, int n)
+{
+    int menor, esq, dir;
+	
+    esq = esquerda(i);
+    dir = direita(i);
+    
+    if (esq < n && v[esq] < v[i]) 
+       menor = esq;
+    else
+       menor = i;
+    if (dir < n && v[dir] < v[menor])  
+       menor = dir;
+       
+    if (menor != i) {
+       troca(&v[i], &v[menor]); 
+       minheapify(v, menor, n);
+    }    
+}
+/************************************/
 void insere(int v[], int x, int *n) {
     if (*n >= MAX) {
         printf("Heap cheio.\n");
