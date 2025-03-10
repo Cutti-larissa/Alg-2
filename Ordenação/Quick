@@ -1,5 +1,12 @@
 #include "stdio.h"
 
+void troca(int v[], int a, int b){ 
+  int temp;
+  temp = v[a];
+  v[a] = v[b];
+  v[b] = temp;
+}
+
 int particionar(int v[], int a, int b){
   int x, m;
   x = v[b];
